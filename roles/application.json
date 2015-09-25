@@ -3,6 +3,11 @@
   "description": "",
   "json_class": "Chef::Role",
   "default_attributes": {
+    "yum" : {
+      "ius" : {
+        "enabled" : false
+      }
+    }
   },
   "override_attributes": {
   },
