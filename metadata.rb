@@ -7,3 +7,4 @@ long_description ''
 version          '0.1.0'
 
 depends 'selinux', '>= 0.9.0'
+depends 'yum-ius', '>= 0.4.2'
