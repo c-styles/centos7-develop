@@ -1,0 +1,33 @@
+{
+  "name": "php-app",
+  "description": "",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+    "yum" : {
+      "ius" : {
+        "enabled" : false
+      }
+    },
+    "php" : {
+      "package_options" : "--enablerepo=ius,epel",
+      "packages" : [
+        "php56u",
+        "php56u-devel",
+        "php56u-cli",
+        "php56u-pear"
+      ],
+      "mysql" : {
+        "package" : "php56u-mysql"
+      }
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "yum-ius",
+    "php"
+  ],
+  "env_run_lists": {
+  }
+}

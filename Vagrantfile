@@ -68,6 +68,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :chef_zero do |chef|
     chef.roles_path = "roles"
     chef.add_role("common")
-    chef.add_role("application")
+    chef.add_role("php-app")
   end
 end
