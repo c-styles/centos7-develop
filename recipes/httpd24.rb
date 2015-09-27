@@ -15,6 +15,8 @@ end
 
 httpd_config 'http' do
   source 'http.conf.erb'
+  variables node['httpd24']['configs']
+  notifies :restart, 'httpd_service[default]'
   action :create
 end
 
