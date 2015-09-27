@@ -28,6 +28,13 @@ vagrant plugin install vagrant-berkshelf
 vagrant up
 ```
 
+### Webサーバーを確認する
+
+```
+http://192.168.33.100
+```
+
+
 ### 停止
 
 ```
