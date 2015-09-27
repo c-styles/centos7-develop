@@ -23,6 +23,33 @@ end
 httpd_module 'ssl' do
   action :create
 end
+httpd_module 'socache_shmcb' do
+  action :create
+end
+
+
+# 自己証明書作成
+# TODO Vagrantだけに限定すべき
+directory "etc/httpd-default/ssl" do
+  owner "root"
+  group "root"
+  recursive true
+  mode 0755
+  action :create
+end
+openssl_x509 '/etc/httpd-default/ssl/mycert.pem' do
+  common_name '192.168.33.100'
+  org 'Foo Bar'
+  org_unit 'Lab'
+  country 'JP'
+end
+
+httpd_config 'https' do
+  source 'ssl.conf.erb'
+  variables node['httpd24']['configs']
+  notifies :restart, 'httpd_service[default]'
+  action :create
+end
 
 
 httpd_module 'php' do
