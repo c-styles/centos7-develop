@@ -1,0 +1,23 @@
+<VirtualHost *:80>
+    ServerName http
+    CustomLog /var/log/httpd-default/http-access_log combined
+    ErrorLog /var/log/httpd-default/http-error_log
+
+    DocumentRoot /vagrant/
+
+
+    <Directory "/vagrant/">
+        Options -Indexes -FollowSymLinks -ExecCGI
+
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+
+        DirectoryIndex index.html index.php
+
+        SetEnv CAKE_ENV vagrant
+    </Directory>
+    <FilesMatch \.php$>
+        SetHandler application/x-httpd-php
+    </FilesMatch>    
+</VirtualHost>
