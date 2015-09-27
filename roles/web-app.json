@@ -1,0 +1,25 @@
+{
+  "name": "web-app",
+  "description": "",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+    "yum" : {
+      "ius" : {
+        "enabled" : false
+      },
+      "epel" : {
+        "enabled" : false
+      }
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "yum-ius",
+    "yum-epel",
+    "centos7-develop::httpd24"
+  ],
+  "env_run_lists": {
+  }
+}

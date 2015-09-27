@@ -8,6 +8,9 @@
     "yum" : {
       "ius" : {
         "enabled" : false
+      },
+      "epel" : {
+        "enabled" : false
       }
     },
     "php" : {
@@ -44,6 +47,7 @@
   "chef_type": "role",
   "run_list": [
     "yum-ius",
+    "yum-epel",
     "centos7-develop::php56"
   ],
   "env_run_lists": {

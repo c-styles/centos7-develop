@@ -69,6 +69,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.roles_path = "roles"
     chef.add_role("common")
     chef.add_role("php-app")
+    chef.add_role("web-app")
     chef.environments_path = "environments"
     chef.environment = "develop"
   end
