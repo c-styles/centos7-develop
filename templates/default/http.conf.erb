@@ -3,10 +3,10 @@
     CustomLog /var/log/httpd-default/http-access_log combined
     ErrorLog /var/log/httpd-default/http-error_log
 
-    DocumentRoot /vagrant/
+    DocumentRoot <%= @document_root%>
 
 
-    <Directory "/vagrant/">
+    <Directory "<%= @document_root%>">
         Options -Indexes -FollowSymLinks -ExecCGI
 
         AllowOverride All
@@ -15,9 +15,9 @@
 
         DirectoryIndex index.html index.php
 
-        SetEnv CAKE_ENV vagrant
+        SetEnv CAKE_ENV <%= @cake_env%>
     </Directory>
     <FilesMatch \.php$>
         SetHandler application/x-httpd-php
-    </FilesMatch>    
+    </FilesMatch>
 </VirtualHost>
