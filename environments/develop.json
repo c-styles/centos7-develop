@@ -1,0 +1,16 @@
+{
+  "name": "develop",
+  "description":"for Vagrant development",
+  "chef_type": "environment",
+  "json_class": "Chef::Environment",
+  "default_attributes": {
+    "httpd24" : {
+      "configs" : {
+        "cake_env" : "vagrant",
+        "document_root" : "/vagrant/"
+      }
+    }
+  },
+  "override_attributes": {
+  }
+}

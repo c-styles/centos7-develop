@@ -1,0 +1,55 @@
+{
+  "name": "php-app",
+  "description": "",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+    "yum" : {
+      "ius" : {
+        "enabled" : false
+      },
+      "epel" : {
+        "enabled" : false
+      }
+    },
+    "php" : {
+      "package_options" : "--enablerepo=ius,epel",
+      "packages" : [
+        "php56u",
+        "php56u-bcmath",
+        "php56u-cli",
+        "php56u-common",
+        "php56u-dba",
+        "php56u-devel",
+        "php56u-embedded",
+        "php56u-enchant",
+        "php56u-gd",
+        "php56u-imap",
+        "php56u-intl",
+        "php56u-ldap",
+        "php56u-mbstring",
+        "php56u-mcrypt",
+        "php56u-mysqlnd",
+        "php56u-pdo",
+        "php56u-pear",
+        "php56u-process",
+        "php56u-soap",
+        "php56u-xml",
+        "php56u-xmlrpc",
+        "php56u-snmp"
+      ],
+      "mysql" : {
+        "package" : "php56u-mysqlnd"
+      }
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "yum-ius",
+    "yum-epel",
+    "centos7-develop::php56"
+  ],
+  "env_run_lists": {
+  }
+}

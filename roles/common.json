@@ -1,0 +1,24 @@
+{
+  "name": "common",
+  "description": "",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "selinux" : {
+      "state" : "disabled"
+    },
+    "firewall" : {
+      "ubuntu_iptables" : true,
+      "allow_ssh" : true,
+      "allow_established" : true
+    }
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "selinux",
+    "centos7-develop::firewalld"
+  ],
+  "env_run_lists": {
+  }
+}

@@ -1,0 +1,25 @@
+SSLPassPhraseDialog exec:/usr/libexec/httpd-ssl-pass-dialog
+SSLSessionCache         shmcb:/run/httpd/sslcache(512000)
+SSLSessionCacheTimeout  300
+SSLRandomSeed startup file:/dev/urandom  256
+SSLRandomSeed connect builtin
+SSLCryptoDevice builtin
+Mutex default ssl-cache
+
+<VirtualHost *:443>
+  ServerName https
+  ErrorLog /var/log/httpd-default/ssl-error-log
+  TransferLog /var/log/httpd-default/ssl-access-log
+  LogLevel warn
+  SSLEngine on
+  SSLProtocol all -SSLv3
+  SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
+  SSLCertificateFile /etc/httpd-default/ssl/mycert.pem
+  SSLCertificateKeyFile /etc/httpd-default/ssl/mycert.key
+
+  SetEnvIf User-Agent ".*MSIE.*" \
+         nokeepalive ssl-unclean-shutdown \
+         downgrade-1.0 force-response-1.0
+  CustomLog /var/log/httpd-default/ssl-request-log \
+          "%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \"%r\" %b"
+</VirtualHost>
